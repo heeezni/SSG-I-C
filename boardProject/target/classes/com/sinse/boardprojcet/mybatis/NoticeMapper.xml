@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  SYSTEM "mybatis-3-mapper.dtd">
+<mapper namespace="com.sinse.boardprojcet.model.Notice">
+	
+	<!-- 기존에 DAO의 업무였던 CRUD 작업의 쿼리 작성을 여기서 한다
+		DAO는 여전히 존재하되, DAO가 직접 쿼리를 작성하지 않는 것 뿐
+	 -->
+	 
+	 <!-- 	;은 넣지 않는다
+	 	List명시 x 여 러건이면 자기가 알아서 담음  -->
+	 <select id="selectAll" resultType="com.sinse.boardprojcet.model.Notice">
+	 	select * from notice order by notice_id desc
+	 </select>
+</mapper>

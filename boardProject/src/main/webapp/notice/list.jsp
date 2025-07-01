@@ -64,8 +64,8 @@ tr:nth-child(even) {
 		<%for(int i=0; i<list.size(); i++){ %>
 		<% Notice notice=list.get(i);%>
 		<tr>
-			<td><%= i+1 %></td>
-			<td><a href="/notice/content.jsp"><%=notice.getTitle() %></a></td>
+			<td><%= notice.getNotice_id() %></td>
+			<td><a href="/notice/content.jsp?notice_id=<%=notice.getNotice_id()%>"><%=notice.getTitle() %></a></td>
 			<td><%=notice.getWriter() %></td>
 			<td><%=notice.getRegdate() %></td>
 			<td><%=notice.getHit() %></td>

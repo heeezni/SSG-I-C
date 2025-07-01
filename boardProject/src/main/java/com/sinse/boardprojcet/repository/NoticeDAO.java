@@ -51,7 +51,14 @@ public class NoticeDAO {
 
 	// 한 건 가져오기
 	public void select() {
-
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		con=poolManager.getConnection();
+		StringBuffer sql=new StringBuffer();
+		sql.append("select * from notice where notice_id=?");
+		// 이제 프레임워크 사용하자~ (MyBatis)
 	}
 
 	// 한 건 넣기
