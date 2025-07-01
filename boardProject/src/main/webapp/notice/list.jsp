@@ -1,6 +1,6 @@
-<%@page import="com.sinse.boardprojcet.model.Notice"%>
+<%@page import="com.sinse.boardproject.model.Notice"%>
 <%@page import="java.util.List"%>
-<%@page import="com.sinse.boardprojcet.repository.NoticeDAO"%>
+<%@page import="com.sinse.boardproject.repository.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%!

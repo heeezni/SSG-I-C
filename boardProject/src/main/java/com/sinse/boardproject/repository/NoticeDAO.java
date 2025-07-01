@@ -1,4 +1,4 @@
-package com.sinse.boardprojcet.repository;
+package com.sinse.boardproject.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sinse.boardprojcet.exception.NoticeException;
-import com.sinse.boardprojcet.model.Notice;
 import com.sinse.boardprojcet.pool.PoolManager;
+import com.sinse.boardproject.exception.NoticeException;
+import com.sinse.boardproject.model.Notice;
 
 // CRUD
 public class NoticeDAO {

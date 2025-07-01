@@ -1,4 +1,4 @@
-package com.sinse.boardprojcet.mybatis;
+package com.sinse.boardproject.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +14,7 @@ public class MybatisConfig {
 
 	public MybatisConfig() {
 		// 비록 패키지이더라도, 대상파일이 java가 아니면, 일반 디렉토리 취급하자
-		String resource = "com/sinse/boardprojcet/mybatis/mybatis-config.xml";
+		String resource = "com/sinse/boardproject/mybatis/mybatis-config.xml";
 		InputStream inputStream;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);

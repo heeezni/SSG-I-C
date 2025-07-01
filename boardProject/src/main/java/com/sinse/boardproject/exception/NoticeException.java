@@ -1,4 +1,4 @@
-package com.sinse.boardprojcet.exception;
+package com.sinse.boardproject.exception;
 
 public class NoticeException extends RuntimeException{
 	

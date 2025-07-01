@@ -1,4 +1,4 @@
-package com.sinse.boardprojcet.controller;
+package com.sinse.boardproject.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sinse.boardprojcet.exception.NoticeException;
-import com.sinse.boardprojcet.model.Notice;
-import com.sinse.boardprojcet.repository.NoticeDAO;
+import com.sinse.boardproject.exception.NoticeException;
+import com.sinse.boardproject.model.Notice;
+import com.sinse.boardproject.repository.NoticeDAO;
 
 // 클라이언트가 전송한 글쓰기 폼의 파라미터들을 받아, DB에 insert 시키는 서블릿
 public class RegistServlet extends HttpServlet{

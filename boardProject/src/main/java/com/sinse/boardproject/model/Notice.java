@@ -1,4 +1,4 @@
-package com.sinse.boardprojcet.model;
+package com.sinse.boardproject.model;
 
 import lombok.Data;
 
