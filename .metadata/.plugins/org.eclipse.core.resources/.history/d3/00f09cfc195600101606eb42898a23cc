@@ -1,0 +1,5 @@
+package com.sinse.boardprojcet.model;
+
+public class Notice {
+
+}
