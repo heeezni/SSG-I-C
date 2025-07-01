@@ -8,7 +8,7 @@ Thumbs.db
 # === 로그 파일 ===
 *.log
 
-# === Maven ===
+# === Maven 빌드 산출물 ===
 /target/
 
 # === Eclipse / Spring Tools Suite 설정 ===
@@ -17,8 +17,9 @@ Thumbs.db
 .settings/
 .metadata/
 Servers/
+.factorypath
 
-# === IDE 설정 파일 ===
+# === IntelliJ / VSCode 설정 ===
 .idea/
 *.iml
 .vscode/
