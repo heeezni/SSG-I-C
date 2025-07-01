@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+
+	String sql ="select * from notice where notice_id=6";
+	out.print(sql);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +84,7 @@ input[type=button]:hover {
 </head>
 <body>
 
-	<h3>게시판 - 글쓰기</h3>
+	<h3>게시판 - 상세보기</h3>
 
 	<div class="container">
 		<form method="get">

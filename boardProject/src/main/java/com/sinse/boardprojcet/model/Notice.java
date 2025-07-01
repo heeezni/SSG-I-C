@@ -14,5 +14,5 @@ public class Notice {
 	private String content;
 	private String regdate;
 	private int hit;
-	
+
 }
