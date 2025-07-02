@@ -113,7 +113,7 @@ input[type=button]:hover {
 	<h3>게시판 - 상세보기</h3>
 
 	<div class="container">
-		<form method="get">
+		<form>
 			<input type="hidden" name="notice_id" value="<%=notice.getNotice_id()%>"> 
 			<!-- ▲ "hidden" = 컴포넌트의 역할은 하지만 시각적으로 보이지 않음 
 					노출되지 않은 상태로 데이터를 전송할 때 사용
