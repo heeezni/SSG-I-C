@@ -1,14 +1,20 @@
+<%@page import="com.sinse.boardproject.model.Notice"%>
+<%@page import="com.sinse.boardproject.repository.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%! NoticeDAO noticeDAO=new NoticeDAO(); %>
 <%
 	// 요청 객체로부터 파라미터 뽑아내기
 	// 이 스크립틀릿 영역은 이 jsp가 서블릿으로 변경되어질 때, service() 메서드 영역이므로
 	// 이미 service()메서드의 매개변수인 요청객체 & 응답객체 넘겨받은 상태
-	//service(HttpServletRequest request, HttpServletResponse response)
+	// service(HttpServletRequest request, HttpServletResponse response)
 	String notice_id=request.getParameter("notice_id");
 	
-	String sql ="select * from notice where notice_id="+notice_id;
-	out.print(sql);
+	//String sql ="select * from notice where notice_id="+notice_id;
+	//out.print(sql);
+	
+	Notice notice=noticeDAO.select(Integer.parseInt(notice_id));
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -71,18 +77,26 @@ input[type=button]:hover {
 			placeholder: '내용 입력',
 			height: 150
 		});
-		
-		//버튼에 이벤트 연결
-		$("input[type='button']").click(()=>{
-			$('form').attr({
-				action:"/notice/regist",
-				// 머리에 데이터를 실어나르게 됨 (=편지 봉투에 나르는 것. 노출, 내용잘리는 문제)
-				method: "POST", // body인 post로 보내자
-			});
-			
-			$('form').submit(); // 전송
+		$("#content").summernote('code', "<%=notice.getContent()%>");
+
+		// 버튼에 이벤트 연결 (서머노트 버튼도 포함되어있음 주의)
+		// 3번째 - 수정
+		$($("input[type='button']")[3]).click(()=>{
 			
 		});
+		// 4번째 - 삭제
+		$($("input[type='button']")[4]).click(()=>{
+			if(confirm("삭제하시겠어요?")){
+				// Get 방식 요청 (링크)
+				location.href="/notice/del?notice_id=<%=notice_id%>"
+			}
+		});
+		
+		// 5번째 -목록
+		$($("input[type='button']")[5]).click(()=>{
+			
+		});
+		
 	});
 </script>
 
@@ -93,11 +107,13 @@ input[type=button]:hover {
 
 	<div class="container">
 		<form method="get">
-			<label for="fname">Title</label> <input type="text" id="fname" name="title" placeholder="제목 입력"> 
-			<label for="lname">Writer</label> <input type="text" id="lname" name="writer" placeholder="작성자 입력"> 
+			<label for="fname">Title</label> <input type="text" id="fname" name="title" value="<%=notice.getTitle()%>" placeholder="제목 입력"> 
+			<label for="lname">Writer</label> <input type="text" id="lname" name="writer" value="<%=notice.getWriter()%>" placeholder="작성자 입력"> 
 			<label for="subject">Content</label>
 			<textarea id="content" name="content" placeholder="내용입력" style="height: 200px"></textarea>
-			<input type="button" value="Submit">
+			<input type="button" value="수정">
+			<input type="button" value="삭제">
+			<input type="button" value="목록">
 		</form>
 	</div>
 

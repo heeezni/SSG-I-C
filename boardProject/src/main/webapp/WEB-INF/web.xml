@@ -8,11 +8,23 @@
 
 	<servlet>
 		<servlet-name>registServlet</servlet-name>
-		<servlet-class>com.sinse.boardprojcet.controller.RegistServlet</servlet-class>
+		<servlet-class>com.sinse.boardproject.controller.RegistServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>registServlet</servlet-name>
 		<url-pattern>/notice/regist</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>deleteServlet</servlet-name>
+		<servlet-class>com.sinse.boardproject.controller.DeleteServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>deleteServlet</servlet-name>
+		<url-pattern>/notice/del</url-pattern>
+	</servlet-mapping>
+	
+
 </web-app>

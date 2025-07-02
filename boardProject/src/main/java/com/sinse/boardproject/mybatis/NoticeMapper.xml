@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  SYSTEM "mybatis-3-mapper.dtd">
-<mapper namespace="com.sinse.boardproject.mybatis.NoticeMapper">
+<mapper namespace="com.sinse.boardproject.model.Notice">
+<!-- namespace의 목적 : 수많은 Mapper xml에 작성된 id들을 중복시키지 않기 위해 -->
+
 	
 	<!-- 기존에 DAO의 업무였던 CRUD 작업의 쿼리 작성을 여기서 한다
 		DAO는 여전히 존재하되, DAO가 직접 쿼리를 작성하지 않는 것 뿐
@@ -11,4 +13,17 @@
 	 <select id="selectAll" resultType="com.sinse.boardproject.model.Notice">
 	 	select * from notice order by notice_id desc
 	 </select>
+	 
+	 <!-- 글 1건 넣기 -->
+	<insert id="insert" parameterType="com.sinse.boardproject.model.Notice">
+		insert into notice(title, writer, content) values(#{title},#{writer},#{content})
+		<!-- #{} Mybatis의 바인드 변수 -->
+	</insert>	 
+	
+	<!-- 글  1건 가져오기 -->
+	<!-- parameterType은 입력, resultType은 결과출력
+	Mybatis가 스스로 Notice 모델에 담는다. 따라서 담은 결과는 resultType으로 반환 -->
+	<select id="select" parameterType="int" resultType="com.sinse.boardproject.model.Notice">
+		select * from notice where notice_id=#{notice_id}
+	</select>
 </mapper>
