@@ -19,7 +19,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class MybatisConfig { // 싱글톤으로 SqlSession 생성
 	private static MybatisConfig instance;
 	private SqlSessionFactory sqlSessionFactory;
-	
+
 	private MybatisConfig() {
 		// Building SqlSessionFactory from XML
 		// 패키지라 할 지라도 대상 자원이 java 클래스가 아니면, 일반 디렉토리 취급해야함
@@ -38,7 +38,7 @@ public class MybatisConfig { // 싱글톤으로 SqlSession 생성
 		}
 		return instance;
 	}
-	
+
 	// SqlSession을 반환하는 메서드 정의
 	// SqlSession은 쿼리문을 수행해주는 객체 (Connection, PreparedStatement, ResultSet 숨겨져 있음)
 	public SqlSession getSqlSession() {

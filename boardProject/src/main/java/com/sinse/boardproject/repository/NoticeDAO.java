@@ -26,45 +26,45 @@ public class NoticeDAO {
 	// 한 건 가져오기
 	public Notice select(int notice_id) {
 		SqlSession sqlSession = config.getSqlSession();
-		Notice notice=sqlSession.selectOne("Notice.select", notice_id); //누구에게 일 시킬지, 파라미터
+		Notice notice = sqlSession.selectOne("Notice.select", notice_id); // 누구에게 일 시킬지, 파라미터
 		sqlSession.close();
-		
+
 		return notice;
 	}
 
 	// 한 건 넣기
 	public void insert(Notice notice) throws NoticeException {
 		SqlSession sqlSession = config.getSqlSession();
-		int result=sqlSession.insert("Notice.insert", notice);
+		int result = sqlSession.insert("Notice.insert", notice);
 		sqlSession.commit(); // DML 트랜잭션 확정
 		sqlSession.close();
-		
-		if(result<1) {
+
+		if (result < 1) {
 			throw new NoticeException("등록 실패");
 		}
 	}
 
 	// 수정
 	public void update(Notice notice) throws NoticeException {
-		SqlSession sqlSession=config.getSqlSession();
-		int result=sqlSession.update("Notice.update",notice);
+		SqlSession sqlSession = config.getSqlSession();
+		int result = sqlSession.update("Notice.update", notice);
 		sqlSession.commit(); // DML 트랜잭션 확정
 		sqlSession.close();
-		
-		if(result<1) {
+
+		if (result < 1) {
 			throw new NoticeException("수정 실패");
 		}
 	}
 
 	// 삭제
-	public void delete(int notice_id) throws NoticeException{
-		SqlSession sqlSession=config.getSqlSession();
-		int result=sqlSession.delete("Notice.delete",notice_id);
+	public void delete(int notice_id) throws NoticeException {
+		SqlSession sqlSession = config.getSqlSession();
+		int result = sqlSession.delete("Notice.delete", notice_id);
 		sqlSession.commit(); // DML 트랜잭션 확정
 		sqlSession.close();
-		
-		if(result<1) {
+
+		if (result < 1) {
 			throw new NoticeException("삭제 실패");
-		}	
+		}
 	}
 }

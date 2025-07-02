@@ -35,9 +35,9 @@ public class PoolManager {
 		for (int i = 0; i < 20; i++) {
 			try {
 				Class.forName(driver);
-				Connection con=DriverManager.getConnection(url, user, pwd);
+				Connection con = DriverManager.getConnection(url, user, pwd);
 				// 벡터에 모아 놓기. 즉, 풀을 만든다!
-				connectionPool.add(con); 
+				connectionPool.add(con);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -45,50 +45,52 @@ public class PoolManager {
 			}
 		}
 	}
-	
+
 	// 빌려주기
 	public synchronized Connection getConnection() {
 		// 빌려줄 것이 없으면 또 만들면 됨!
-		if(connectionPool.isEmpty()) { // connection 객체가 소진되었다면...
+		if (connectionPool.isEmpty()) { // connection 객체가 소진되었다면...
 			createConnection();
 		}
 		return connectionPool.remove(0); // 반환과 동시에, 기존 벡터 요소 하나 제거! (0번째 꺼내면서 그 공간도 제거)
 	}
-	
+
 	// 반납하기
 	public void release(Connection con) {
-		if(con!=null) {
+		if (con != null) {
 			connectionPool.add(con); // 다시 벡터에 추가
 		}
 	}
+
 	public void release(Connection con, PreparedStatement pstmt) {
-		if(pstmt!=null) {
+		if (pstmt != null) {
 			try {
 				pstmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		if(con!=null) {
+		if (con != null) {
 			connectionPool.add(con); // 다시 벡터에 추가
 		}
 	}
+
 	public void release(Connection con, PreparedStatement pstmt, ResultSet rs) {
-		if(rs!=null) {
+		if (rs != null) {
 			try {
 				rs.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		if(pstmt!=null) {
+		if (pstmt != null) {
 			try {
 				pstmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		if(con!=null) {
+		if (con != null) {
 			connectionPool.add(con); // 다시 벡터에 추가
 		}
 	}

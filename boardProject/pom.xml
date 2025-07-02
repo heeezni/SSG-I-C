@@ -24,6 +24,7 @@
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
 	    <version>1.18.38</version>
+	    <scope>provided</scope>
 	</dependency>
 	  <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 	<dependency>
