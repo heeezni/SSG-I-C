@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration SYSTEM "mybatis-3-config.dtd">
 <configuration>
+	<typeAliases>
+		<typeAlias type="com.sinse.boardproject.model.Notice" alias="Notice"/>
+		<!-- 긴 이름을 내가 원하는 이름으로 바꾸겠다 -->
+	</typeAliases>
+
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />

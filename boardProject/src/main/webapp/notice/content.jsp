@@ -101,7 +101,7 @@ input[type=button]:hover {
 		
 		// 5번째 -목록
 		$($("input[type='button']")[5]).click(()=>{
-			
+			location.href="/notice/list.jsp";
 		});
 		
 	});

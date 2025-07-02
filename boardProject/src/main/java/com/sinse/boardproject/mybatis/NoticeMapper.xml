@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  SYSTEM "mybatis-3-mapper.dtd">
-<mapper namespace="com.sinse.boardproject.model.Notice">
+<mapper namespace="Notice">
 <!-- namespace의 목적 : 수많은 Mapper xml에 작성된 id들을 중복시키지 않기 위해 -->
 
 	
@@ -10,12 +10,12 @@
 	 
 	 <!-- 	;은 넣지 않는다
 	 	List명시 x 여러건이면 자기가 알아서 담음  -->
-	 <select id="selectAll" resultType="com.sinse.boardproject.model.Notice">
+	 <select id="selectAll" resultType="Notice">
 	 	select * from notice order by notice_id desc
 	 </select>
 	 
 	 <!-- 글 1건 넣기 -->
-	<insert id="insert" parameterType="com.sinse.boardproject.model.Notice">
+	<insert id="insert" parameterType="Notice">
 		insert into notice(title, writer, content) values(#{title},#{writer},#{content})
 		<!-- #{} Mybatis의 바인드 변수 -->
 	</insert>	 
@@ -23,7 +23,7 @@
 	<!-- 글  1건 가져오기 -->
 	<!-- parameterType은 입력, resultType은 결과출력
 	Mybatis가 스스로 Notice 모델에 담는다. 따라서 담은 결과는 resultType으로 반환 -->
-	<select id="select" parameterType="int" resultType="com.sinse.boardproject.model.Notice">
+	<select id="select" parameterType="int" resultType="Notice">
 		select * from notice where notice_id=#{notice_id}
 	</select>
 	
@@ -33,7 +33,7 @@
 	</delete>
 	
 	<!-- 1건 수정 -->
-	<update id="update" parameterType="com.sinse.boardproject.model.Notice">
+	<update id="update" parameterType="Notice">
 		update notice set title=#{title}, writer=#{writer}, content=#{content}
 		where notice_id=#{notice_id}	
 	</update>

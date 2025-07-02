@@ -21,9 +21,8 @@ public class UpdateServlet extends HttpServlet{
 			
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out=response.getWriter();
+		request.setCharacterEncoding("utf-8"); // 파라미터 인코딩 처리
+		response.setContentType("text/html; charset=UTF-8"); // jsp의 page 지시 영역
 		
 		// 파라미터 받기
 		String notice_id=request.getParameter("notice_id");
@@ -37,18 +36,21 @@ public class UpdateServlet extends HttpServlet{
 		notice.setWriter(writer);
 		notice.setContent(content);
 		
+		PrintWriter out=response.getWriter();
+		
+		out.print("<script>");
 		try {
 			noticeDAO.update(notice); // 수정 수행
-			out.print("<script>");
-			out.print("alert('수정하시겠습니까?')");
-			out.print("location.href='/notice/content.jsp'");
-			out.print("</script>");
+			
+			// try-catch 걸고, 유저들에게 보여줄 부분 작성
+			out.print("alert('수정 완료');");
+			// 수정완료 후 다시 상세보기로 ▼
+			out.print("location.href='/notice/content.jsp?notice_id="+notice.getNotice_id()+"';");
 		} catch (NoticeException e) {
 			e.printStackTrace();
-			out.print("<script>");
-			out.print("alert('"+e.getMessage()+"')");
+			out.print("alert('"+e.getMessage()+"');");
 			out.print("history.back();");
-			out.print("</script>");
 		}
+		out.print("</script>");
 	}
 }
