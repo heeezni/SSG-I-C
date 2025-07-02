@@ -36,7 +36,7 @@ public class NoticeDAO {
 	public void insert(Notice notice) throws NoticeException {
 		SqlSession sqlSession = config.getSqlSession();
 		int result=sqlSession.insert("com.sinse.boardproject.model.Notice.insert", notice);
-		sqlSession.commit(); // DML 트랜젝션 확정
+		sqlSession.commit(); // DML 트랜잭션 확정
 		sqlSession.close();
 		
 		if(result<1) {
@@ -45,12 +45,26 @@ public class NoticeDAO {
 	}
 
 	// 수정
-	public void update() {
-
+	public void update(Notice notice) throws NoticeException {
+		SqlSession sqlSession=config.getSqlSession();
+		int result=sqlSession.update("com.sinse.boardproject.model.Notice.update",notice);
+		sqlSession.commit(); // DML 트랜잭션 확정
+		sqlSession.close();
+		
+		if(result<1) {
+			throw new NoticeException("수정 실패");
+		}
 	}
 
 	// 삭제
-	public void delete() {
-
+	public void delete(int notice_id) throws NoticeException{
+		SqlSession sqlSession=config.getSqlSession();
+		int result=sqlSession.delete("com.sinse.boardproject.model.Notice.delete",notice_id);
+		sqlSession.commit(); // DML 트랜잭션 확정
+		sqlSession.close();
+		
+		if(result<1) {
+			throw new NoticeException("삭제 실패");
+		}	
 	}
 }

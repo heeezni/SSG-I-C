@@ -77,12 +77,19 @@ input[type=button]:hover {
 			placeholder: '내용 입력',
 			height: 150
 		});
-		$("#content").summernote('code', "<%=notice.getContent()%>");
+		$("#content").summernote('code',"<%=notice.getContent()%>");
 
 		// 버튼에 이벤트 연결 (서머노트 버튼도 포함되어있음 주의)
 		// 3번째 - 수정
 		$($("input[type='button']")[3]).click(()=>{
-			
+			if(confirm("수정하시겠어요?")){
+				// 서버로 입력폼의 내용을 모두 가져가야 함 -> post방식 사용
+				$("form").attr({
+					method:"POST",
+					action:"/notice/update"
+				});
+				$("form").submit();
+			}
 		});
 		// 4번째 - 삭제
 		$($("input[type='button']")[4]).click(()=>{
@@ -107,9 +114,14 @@ input[type=button]:hover {
 
 	<div class="container">
 		<form method="get">
-			<label for="fname">Title</label> <input type="text" id="fname" name="title" value="<%=notice.getTitle()%>" placeholder="제목 입력"> 
-			<label for="lname">Writer</label> <input type="text" id="lname" name="writer" value="<%=notice.getWriter()%>" placeholder="작성자 입력"> 
-			<label for="subject">Content</label>
+			<input type="hidden" name="notice_id" value="<%=notice.getNotice_id()%>"> 
+			<!-- ▲ "hidden" = 컴포넌트의 역할은 하지만 시각적으로 보이지 않음 
+					노출되지 않은 상태로 데이터를 전송할 때 사용
+			-->
+			
+			<label for="title">Title</label> <input type="text" name="title" value="<%=notice.getTitle()%>" placeholder="제목 입력"> 
+			<label for="writer">Writer</label> <input type="text" name="writer" value="<%=notice.getWriter()%>" placeholder="작성자 입력"> 
+			<label for="content">Content</label>
 			<textarea id="content" name="content" placeholder="내용입력" style="height: 200px"></textarea>
 			<input type="button" value="수정">
 			<input type="button" value="삭제">

@@ -26,4 +26,16 @@
 	<select id="select" parameterType="int" resultType="com.sinse.boardproject.model.Notice">
 		select * from notice where notice_id=#{notice_id}
 	</select>
+	
+	<!-- 1건 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from notice where notice_id=#{notice_id}
+	</delete>
+	
+	<!-- 1건 수정 -->
+	<update id="update" parameterType="com.sinse.boardproject.model.Notice">
+		update notice set title=#{title}, writer=#{writer}, content=#{content}
+		where notice_id=#{notice_id}	
+	</update>
+	
 </mapper>
