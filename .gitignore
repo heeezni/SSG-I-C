@@ -10,6 +10,8 @@ Thumbs.db
 
 # === Maven 빌드 산출물 ===
 /target/
+# 하위 폴더의 target도 무시
+**/target/
 
 # === Eclipse / Spring Tools Suite 설정 ===
 .project
