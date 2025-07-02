@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sinse.boardprojcet.pool.PoolManager;
 import com.sinse.boardproject.exception.NoticeException;
 import com.sinse.boardproject.model.Notice;
+import com.sinse.boardproject.pool.PoolManager;
 
 // CRUD
 public class NoticeDAO {

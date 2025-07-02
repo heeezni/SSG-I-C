@@ -1,4 +1,4 @@
-package com.sinse.boardprojcet.pool;
+package com.sinse.boardproject.pool;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
