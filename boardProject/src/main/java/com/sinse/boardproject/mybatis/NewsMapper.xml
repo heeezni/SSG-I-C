@@ -2,5 +2,16 @@
 <!DOCTYPE mapper  SYSTEM "mybatis-3-mapper.dtd">
 <mapper namespace="News">
 
+	<!-- 모든 레코드 가져오기 -->
+	<select id="selectAll" resultType="News">
+	<!-- resulType : 어디다 담을 거야? -->
+		select * from news order by news_id desc
+	</select>
+	
+	
+	<!-- 한 건 등록 -->
+	<insert id="insert" parameterType="News">
+		insert into news(title, writer, content) values(#{title}, #{writer}, #{content})
+	</insert>
 	
 </mapper>
