@@ -8,6 +8,11 @@
 		select * from news order by news_id desc
 	</select>
 	
+	<!-- 게시물 한 건 가져오기 -->
+	<select id="select" parameterType="int" resultType="News">
+	select * from news where news_id=#{news_id}
+	
+	</select>
 	
 	<!-- 한 건 등록 -->
 	<insert id="insert" parameterType="News">

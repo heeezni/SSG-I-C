@@ -2,4 +2,15 @@
 <!DOCTYPE mapper  SYSTEM "mybatis-3-mapper.dtd">
 <mapper namespace="Comment">
 
+	<!-- 댓글 등록 -->
+	<insert id="insert" parameterType="Comment">
+		insert into comment(msg, user, news_id) values(#{msg}, #{user}, ${news.news_id}) 
+		<!-- news_id는 news안에 있으므로! -->	
+	</insert>
+	
+	<!-- 댓글 목록 -->
+	<select id="selectByNewsId" parameterType="int" resultType="Comment">
+		select * from comment where news_id=#{news_id}
+	</select>
+	
 </mapper>

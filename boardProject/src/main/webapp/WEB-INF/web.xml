@@ -10,7 +10,6 @@
 		<servlet-name>registServlet</servlet-name>
 		<servlet-class>com.sinse.boardproject.controller.RegistServlet</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>registServlet</servlet-name>
 		<url-pattern>/notice/regist</url-pattern>
@@ -20,7 +19,6 @@
 		<servlet-name>deleteServlet</servlet-name>
 		<servlet-class>com.sinse.boardproject.controller.DeleteServlet</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>deleteServlet</servlet-name>
 		<url-pattern>/notice/del</url-pattern>
@@ -30,7 +28,6 @@
 		<servlet-name>updateServlet</servlet-name>
 		<servlet-class>com.sinse.boardproject.controller.UpdateServlet</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>updateServlet</servlet-name>
 		<url-pattern>/notice/update</url-pattern>
@@ -40,10 +37,18 @@
 		<servlet-name>newsRegistServlet</servlet-name>
 		<servlet-class>com.sinse.boardproject.news.controller.RegistServlet</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>newsRegistServlet</servlet-name>
 		<url-pattern>/news/regist</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>writeServlet</servlet-name>
+		<servlet-class>com.sinse.boardproject.comment.controller.WriteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>writeServlet</servlet-name>
+		<url-pattern>/comment/regist</url-pattern>
 	</servlet-mapping>
 	
 
