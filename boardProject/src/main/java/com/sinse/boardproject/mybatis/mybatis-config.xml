@@ -3,6 +3,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.sinse.boardproject.model.Notice" alias="Notice"/>
+		<typeAlias type="com.sinse.boardproject.model.News" alias="News"/>
+		<typeAlias type="com.sinse.boardproject.model.Comment" alias="Comment"/>
 		<!-- 긴 이름을 내가 원하는 이름으로 바꾸겠다 -->
 	</typeAliases>
 
@@ -19,5 +21,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/sinse/boardproject/mybatis/NoticeMapper.xml" />
+		<mapper resource="com/sinse/boardproject/mybatis/NewsMapper.xml" />
+		<mapper resource="com/sinse/boardproject/mybatis/CommentMapper.xml" />
 	</mappers>
 </configuration>
