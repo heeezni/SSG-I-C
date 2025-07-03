@@ -104,30 +104,38 @@ a {
 	  <%News news=newsList.get(curPos++); %>
 		  <tr>
 			    <td><%=num-- %></td>
-			    <td><a href="/news/content.jsp?news_id=<%=news.getNews_id()%>"><%=news.getTitle() %></a></td>
+			    <td><a href="/news/content.jsp?news_id=<%=news.getNews_id()%>"><%=news.getTitle() %></a> [<%=news.getCommentList().size() %>]</td>
 			    <td><%=news.getWriter() %></td>
 			    <td><%=news.getRegdate() %></td>
 			    <td><%=news.getHit() %></td>
 		  </tr>
 	  <%} %>
+  <%-- ===================== [페이지 번호 출력 영역] ===================== --%>
 	  <tr>
-	  	<td colspan="5">
-	  		<%-- =============================================================== --%>
-			<%-- 페이징 번호 및 이전/다음 링크를 표시합니다. --%>
-			<%-- =============================================================== --%>
-	  		<a href="#">◀</a>
-	  		
-	  		<%-- 현재 블록의 페이지 번호들을 반복하여 링크를 생성합니다. --%>
-	  		<%for(int i=paging.getFirstPage(); i<=paging.getLastPage(); i++){ %>
-	  		<%-- 총 페이지 수를 넘어서는 페이지 번호는 표시하지 않습니다. --%>
-	  		<%if(i>paging.getTotalPage())break; %>
-	  			<%-- 현재 페이지인 경우 'pageNum' 클래스를 적용하여 스타일을 다르게 표시합니다. --%>
-	  			<a <%if(paging.getCurrentPage()==i){ %> class="pageNum" <%} %> 
-	  				href="/news/list.jsp?currentPage=<%=i%>">[<%=i%>]</a>
-	  		<%} %>	  	
-	  		
-	  		<a href="#">▶</a>
-	  	</td>
+	    <td colspan="5">
+			<%-- ◀ 이전 블럭으로 이동 --%>
+	        <% if(paging.getFirstPage() > 1) { %>
+				<a href="/news/list.jsp?currentPage=<%= paging.getFirstPage() - paging.getBlockSize() %>">◀</a>
+			<% } else { %>
+				<a href="javascript:alert('이전 페이지가 없습니다.');">◀</a>
+			<% } %>
+	
+	      <%-- 페이지 번호 블럭 반복 출력 --%>
+	      <% for (int i = paging.getFirstPage(); i <= paging.getLastPage(); i++) { %>
+	      	<%-- ⭐ 총 페이지 수를 넘어서는 페이지 번호는 표시하지 않습니다.⭐ --%>
+	        <% if (i > paging.getTotalPage()) break; %>
+	       	 <a<% if (paging.getCurrentPage() == i) { %> class="pageNum" <% } %>
+	          	href="/news/list.jsp?currentPage=<%= i %>">
+	          	[<%= i %>]</a>
+	     	 <% } %>
+	         
+			<%-- ▶ 다음 블럭으로 이동 --%>
+	        <% if(paging.getLastPage() < paging.getTotalPage()) { %>
+				<a href="/news/list.jsp?currentPage=<%= paging.getFirstPage() + paging.getBlockSize() %>">▶</a>
+			<% } else { %>
+				<a href="javascript:alert('다음 페이지가 없습니다.');">▶</a>
+			<% } %>
+	    </td>
 	  </tr>
 	  <tr>
 	  	<td colspan="5">

@@ -1,0 +1,30 @@
+boardProject/ # 프로젝트 루트
+└── src/ # 소스 코드
+    └── main/ # 메인 소스
+        ├── java/ # 자바 소스
+        │   └── com/
+        │       └── sinse/
+        │           └── boardproject/ # 게시판 프로젝트
+        │               ├── comment/ # 댓글 관련
+        │               │   └── controller/ # 댓글 컨트롤러
+        │               │       └── WriteServlet.java # 댓글 작성 서블릿
+        │               ├── exception/ # 예외 처리
+        │               │   ├── CommentException.java # 댓글 예외
+        │               │   └── NewsException.java # 뉴스 예외
+        │               ├── model/ # 데이터 모델 (DTO)
+        │               │   ├── Comment.java # 댓글 모델
+        │               │   └── News.java # 뉴스 모델
+        │               ├── mybatis/ # MyBatis 관련 파일
+        │               │   ├── CommentMapper.xml # 댓글 매퍼
+        │               │   └── NewsMapper.xml # 뉴스 매퍼
+        │               ├── news/ # 뉴스 관련
+        │               │   └── controller/ # 뉴스 컨트롤러
+        │               │       └── RegistServlet.java # 뉴스 등록 서블릿
+        │               └── repository/ # 데이터 접근 (DAO)
+        │                   ├── CommentDAO.java # 댓글 DAO
+        │                   └── NewsDAO.java # 뉴스 DAO
+        └── webapp/ # 웹 애플리케이션 리소스
+            └── news/ # 뉴스 관련 JSP
+                ├── content.jsp # 뉴스 내용 페이지
+                ├── list.jsp # 뉴스 목록 페이지
+                └── write.jsp # 뉴스 작성 페이지

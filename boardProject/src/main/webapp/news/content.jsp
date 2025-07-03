@@ -103,6 +103,9 @@ tr:nth-child(even) {
 		$("#bt_news_del").click(()=>{
 			
 		});
+		$("#bt_news_list").click(()=>{
+			location.href="/news/list.jsp";
+		});
 		
 		$("#bt_news_regist").click(()=>{
 			$("#comment_form").attr({
