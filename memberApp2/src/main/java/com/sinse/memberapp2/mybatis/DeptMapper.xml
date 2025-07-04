@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dept">
+
+	<!-- 부서 목록 출력 -->
+	<!-- select d.deptno, dname, loc, count(ename) from dept d left outer join 
+		emp e on d.deptno=e.deptno group by d.deptno, dname, loc; 이렇게 MyBatis에 직접 
+		Join을 짜면? 모델의 컬럼과 1:1 매핑이 안됨 (count 어쩔..) MyBatis: "Join 쓰지말고 테이블 간의 관계를 
+		Java로 표현해라" -->
+
+	<resultMap type="Dept" id="DeptEmpMap">
+		<id column="deptno" property="deptno" />
+		<result column="dname" property="dname" />
+		<result column="loc" property="loc" />
+		<collection 
+			column="deptno"
+			javaType="java.util.List"
+			ofType="Emp"
+			property="empList"
+			select="Emp.selectByDeptno"
+			/>
+		
+	</resultMap>
+
+	<select id="selectAll" resultMap="DeptEmpMap">
+		select deptno, dname, loc from dept
+	</select>
+
+
+</mapper>
