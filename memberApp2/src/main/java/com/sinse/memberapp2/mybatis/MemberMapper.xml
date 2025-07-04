@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+
+
+
+	<!-- 바인드 변수 자료형 정할 때 : parameterType, 어디다 심을건데? : resultType -->
+	<select id="login" parameterType="Member" resultType="Member">
+		select * from member where id=#{id} and pwd=#{pwd}
+	</select>
+
+
+</mapper>

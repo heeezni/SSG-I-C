@@ -25,7 +25,7 @@
 	</select>
 
 	<!-- 지정된 부서에 소속된 사원 -->
-	<!-- 바인드 변수 자료형 정할 때 : parameterType, 어디서 가져올건데? : resultType -->
+	<!-- 바인드 변수 자료형 정할 때 : parameterType, 어디다 심을건데?? : resultType -->
 	<select id="selectByDeptno" parameterType="int" resultType="Emp">
 		select * from emp where deptno=#{deptno}
 	</select>
