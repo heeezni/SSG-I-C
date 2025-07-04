@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,8 +48,16 @@ public class LoginServlet extends HttpServlet{
 		Member obj=null;
 		try {
 			obj=memberDAO.login(member);
+			
+			// 로그인이 성공되면, 세션 객체에 담자!
+			// jsp에서는 내장 객체로써, session이 지원되지만, 현재 이 코드는 서블릿이기때문에 개발자가 자료형으로 제어해야함
+			HttpSession session= request.getSession(); // 현재 이 요청에 의해 할당된 세션 (tomcat이 만드므로 new 안됨)
+			session.setAttribute("member", obj);
+			
 			out.print("alert('"+obj.getName()+" 님 반갑습니다.');");
 			out.print("location.href='/index.jsp';");
+			
+			
 		} catch (MemberNotFoundException e) {
 			e.printStackTrace();
 			out.print("alert('"+e.getMessage()+"');");
