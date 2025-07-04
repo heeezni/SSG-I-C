@@ -1,4 +1,5 @@
 
+<%@page import="com.sinse.memberapp2.model.Dept"%>
 <%@page import="com.sinse.memberapp2.model.Emp"%>
 <%@page import="java.util.List"%>
 <%@page import="com.sinse.memberapp2.repository.EmpDAO"%>
@@ -25,11 +26,12 @@
 			<th>HIREDATE</th>		
 			<th>SAL</th>		
 			<th>COMM</th>		
-			<th>부서명</th>		
-			<th>부서위치</th>		
+			<th>Dept의 부서명</th>		
+			<th>Dept의 부서위치</th>		
 		</tr>
 		
 		<%for(Emp e: empList ){ %>
+		<% Dept dept=e.getDept(); %>
 		<tr>
 			<td><%=e.getEmpno() %></td>
 			<td><%=e.getEname() %></td>
@@ -38,8 +40,8 @@
 			<td><%=e.getHiredate() %></td>
 			<td><%=e.getSal() %></td>
 			<td><%=e.getComm() %></td>
-			<td><%=e.getDept().getDname() %></td>
-			<td><%=e.getDept().getLoc() %></td>
+			<td><%=dept.getDname() %></td>
+			<td><%=dept.getLoc() %></td>
 		</tr>
 		<%} %>
 	</table>
