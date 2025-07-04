@@ -9,19 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.sinse.memberapp2.exception.MemberNotFoundException;
 import com.sinse.memberapp2.model.Member;
 import com.sinse.memberapp2.repository.MemberDAO;
+import lombok.extern.slf4j.*;
+
+
 /**
  * Post로 전송되어오는 로그인 정보를 받아, 
  * 회원 테이블과 일치 여부에 따라
  * 로그인 성공 / 실패
  * */
+@Slf4j
 public class LoginServlet extends HttpServlet{
-	Logger logger=LoggerFactory.getLogger(getClass()); 
+	
+	//Logger logger=LoggerFactory.getLogger(getClass()); 
 	MemberDAO memberDAO=new MemberDAO();
 	
 	@Override
@@ -30,12 +32,14 @@ public class LoginServlet extends HttpServlet{
 		String id=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
 		
+		log.info("qwe");
+		
 		for(int i=0; i<=10; i++) {
-			logger.trace("i는 "+i);
+			log.trace("i는 "+i);
 		}
 		
-		logger.debug("넘겨받은 아이디 "+id);
-		logger.debug("넘겨받은 비번 "+pwd);
+		log.debug("넘겨받은 아이디 "+id);
+		log.debug("넘겨받은 비번 "+pwd);
 		
 		Member member=new Member();
 		member.setId(id);
