@@ -28,3 +28,5 @@ boardProject/ # 프로젝트 루트
                 ├── content.jsp # 뉴스 내용 페이지
                 ├── list.jsp # 뉴스 목록 페이지
                 └── write.jsp # 뉴스 작성 페이지
+
+                깃허브 연동테스트중...
