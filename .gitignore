@@ -1,38 +1,23 @@
-# === OS 관련 파일 ===
+# Eclipse 워크스페이스 메타데이터 (절대 올리지 말 것)
+/.metadata/
+/Servers/
+
+# OS 임시 파일
 .DS_Store
 Thumbs.db
 
-# === Java 컴파일 산출물 ===
-*.class
-
-# === 로그 파일 ===
+# 빌드 결과물 (Maven)
+/target/
 *.log
 
-# === Maven 빌드 산출물 ===
-/target/
-# 하위 폴더의 target도 무시
-**/target/
-
-# === Eclipse / Spring Tools Suite 설정 ===
-.project
-.classpath
-.settings/
-.metadata/
-Servers/
-.factorypath
-
-# === IntelliJ / VSCode 설정 ===
-.idea/
-*.iml
-.vscode/
-
-# === 환경 변수 파일 ===
-.env
-
-# === 백업/스왑 파일 ===
+# 임시/백업 파일
 *.bak
 *.swp
-*~
+*.tmp
 
-# === 테스트 리포트 ===
-/test-output/
+# Maven Wrapper
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+mvnw
+mvnw.cmd
+>>>>>>> 21797b1 (hibernate 수업내용)
